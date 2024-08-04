@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjpyia01jr3br"]
+
+[ext_resource type="AudioStream" uid="uid://ryesyyxkgua5" path="res://tunetank.com_6718_mutant!_by_cloudsystem.mp3" id="1_8q3mc"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_8q3mc")
+autoplay = true

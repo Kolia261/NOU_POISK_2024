@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://bdpjuelmyshr6"]
+
+[ext_resource type="Texture2D" uid="uid://crk7wjvfku1w1" path="res://Childruner.png" id="1_1ojai"]
+[ext_resource type="Script" path="res://father.gd" id="1_b1pgy"]
+[ext_resource type="Texture2D" uid="uid://bx0616g366gnn" path="res://Cgild2.png" id="2_wi7jr"]
+[ext_resource type="Texture2D" uid="uid://bmtw5ig0byk8j" path="res://Childjumper.png" id="3_j8drx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ojob"]
+atlas = ExtResource("1_1ojai")
+region = Rect2(0, 0, 20, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi7fk"]
+atlas = ExtResource("1_1ojai")
+region = Rect2(20, 0, 20, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_165rv"]
+atlas = ExtResource("2_wi7jr")
+region = Rect2(0, 0, 20, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr8lr"]
+atlas = ExtResource("2_wi7jr")
+region = Rect2(20, 0, 20, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctv2v"]
+atlas = ExtResource("3_j8drx")
+region = Rect2(0, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xipfw"]
+atlas = ExtResource("3_j8drx")
+region = Rect2(16, 0, 16, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l2t82"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ojob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi7fk")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_165rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr8lr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctv2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xipfw")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3uleu"]
+radius = 9.58252
+height = 24.8126
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_b1pgy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.875, 1)
+sprite_frames = SubResource("SpriteFrames_l2t82")
+animation = &"jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_3uleu")
+debug_color = Color(0.998534, 0, 0.139499, 0.42)
+
+[node name="Timer" type="Timer" parent="."]

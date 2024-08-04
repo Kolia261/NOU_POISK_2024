@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://di1aua2wic8q0"]
+
+[ext_resource type="Script" path="res://levels.gd" id="1_25nqw"]
+[ext_resource type="Texture2D" uid="uid://s3qyi2yjhtpr" path="res://1678250654_bogatyr-club-p-yedinstvo-semi-foni-krasivo-64.jpg" id="1_h3qsv"]
+
+[node name="levels" type="Node2D"]
+script = ExtResource("1_25nqw")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 218.0
+offset_top = 16.0
+offset_right = 919.0
+offset_bottom = 230.0
+theme_override_colors/font_color = Color(0.4, 0, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "Level one"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(564.5, 322.25)
+scale = Vector2(0.124365, 0.109163)
+texture = ExtResource("1_h3qsv")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 218.0
+offset_top = 261.0
+offset_right = 919.0
+offset_bottom = 475.0
+theme_override_colors/font_color = Color(0.4, 0, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "Level two"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

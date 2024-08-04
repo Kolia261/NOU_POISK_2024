@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cynvjxcwan6s6"]
+
+[ext_resource type="Texture2D" uid="uid://jfye2d3j1ram" path="res://Food.png" id="1_v0kwn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w2c10"]
+radius = 9.0
+height = 18.0
+
+[node name="bullet" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_w2c10")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_v0kwn")
+region_enabled = true
+region_rect = Rect2(49.5386, 0.106808, 12.5671, 15.1346)

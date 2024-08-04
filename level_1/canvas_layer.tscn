@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://jdmfwmtqxia1"]
+
+[ext_resource type="Texture2D" uid="uid://c12nr1molm1nr" path="res://Grusha.png" id="1_j6nhx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kkvp5"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 21.0
+offset_top = -11.0
+offset_right = 85.0
+offset_bottom = 53.0
+texture = ExtResource("1_j6nhx")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 67.0
+offset_top = 15.0
+offset_right = 138.0
+offset_bottom = 38.0
+text = "SCORE: 0"
+label_settings = SubResource("LabelSettings_kkvp5")

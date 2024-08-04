@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://pow6150qrx4o"]
+
+[ext_resource type="Texture2D" uid="uid://bbnfdju2e40lp" path="res://Batiok.png" id="1_3k722"]
+[ext_resource type="Script" path="res://fatger.gd" id="1_6nwy1"]
+[ext_resource type="Texture2D" uid="uid://b6koj4m3y2sgd" path="res://batiok biot zhoska.png" id="2_10i1d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0r255"]
+radius = 17.1172
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oljk5"]
+radius = 318.926
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vim6b"]
+atlas = ExtResource("2_10i1d")
+region = Rect2(0, 0, 26, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jamgk"]
+atlas = ExtResource("2_10i1d")
+region = Rect2(26, 0, 26, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uea5w"]
+atlas = ExtResource("2_10i1d")
+region = Rect2(52, 0, 26, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_781ee"]
+atlas = ExtResource("1_3k722")
+region = Rect2(0, 0, 20, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0mmx"]
+atlas = ExtResource("1_3k722")
+region = Rect2(20, 0, 20, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nccma"]
+atlas = ExtResource("1_3k722")
+region = Rect2(40, 0, 20, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cscch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vim6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jamgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uea5w")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_781ee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0mmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nccma")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Naighbor_2" type="Node2D"]
+script = ExtResource("1_6nwy1")
+
+[node name="min_Detector" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="min_Detector"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_0r255")
+
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+shape = SubResource("CircleShape2D_oljk5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cscch")
+animation = &"Death"
+
+[connection signal="body_entered" from="min_Detector" to="." method="_on_min_detector_body_entered"]
+[connection signal="body_exited" from="min_Detector" to="." method="_on_min_detector_body_exited"]
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
