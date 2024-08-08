@@ -9,7 +9,7 @@ var damage = 1
 var min_chase = false
 
 func _ready():
-	Globals.count_healf = 5
+	Globals.count_healf = 10
 	scorehealth.text = "Lives  : %d" % Globals.count_healf
 
 func _physics_process(delta):
@@ -37,7 +37,6 @@ func _on_detector_body_exited(body):
 
 
 func _on_min_detector_body_entered(body):
-	print(body.name)
 	if body.name == "Player":
 		Globals.count_healf -= damage
 		scorehealth.text = "Lives  : %d" % Globals.count_healf

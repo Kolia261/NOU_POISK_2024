@@ -17,7 +17,7 @@ offset_bottom = 123.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-text = "Создатель: Добро пожаловать в игру 
+text = "Аноним: Добро пожаловать в игру 
 A typical Russian family. В нашей игре вам нужно:
 1. Собирать груши. 2. Убегать от злых соседей.
 3. Искать ключи от дверей. Удачи в выживании!"

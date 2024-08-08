@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://dp4wcks8em0mc"]
+
+[ext_resource type="Script" path="res://Granny.gd" id="1_cpydi"]
+[ext_resource type="Texture2D" uid="uid://djq0hsbw4wmfg" path="res://babkakgb biet bledn.png" id="2_udcl0"]
+[ext_resource type="Texture2D" uid="uid://qq3s0frv2o2h" path="res://babkakgb idet bledn.png" id="3_63xks"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lvpwv"]
+radius = 17.1172
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ubxx"]
+radius = 318.926
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6atht"]
+atlas = ExtResource("2_udcl0")
+region = Rect2(0, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uny3c"]
+atlas = ExtResource("2_udcl0")
+region = Rect2(45, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn1ba"]
+atlas = ExtResource("3_63xks")
+region = Rect2(0, 0, 42, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f3vl"]
+atlas = ExtResource("3_63xks")
+region = Rect2(42, 0, 42, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sghf3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6atht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uny3c")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn1ba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f3vl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hr0r"]
+
+[node name="Granny" type="CharacterBody2D"]
+collision_mask = 4
+script = ExtResource("1_cpydi")
+
+[node name="min_Detector" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="min_Detector"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_lvpwv")
+
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+shape = SubResource("CircleShape2D_4ubxx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sghf3")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0hr0r")
+
+[connection signal="body_entered" from="min_Detector" to="." method="_on_min_detector_body_entered"]
+[connection signal="body_exited" from="min_Detector" to="." method="_on_min_detector_body_exited"]
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]

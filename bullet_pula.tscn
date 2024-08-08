@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccdneseedbn4l"]
+
+[ext_resource type="Texture2D" uid="uid://da78w7wjon2rk" path="res://bananabullet.png" id="1_eg0vg"]
+[ext_resource type="Script" path="res://bullet_pula.gd" id="1_f0bsn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kd7na"]
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_f0bsn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_eg0vg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kd7na")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

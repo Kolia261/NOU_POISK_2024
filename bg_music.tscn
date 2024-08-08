@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://re8yrk3mimo1"]
+
+[ext_resource type="AudioStream" uid="uid://cistadufk4gm3" path="res://a5bf579ed23da4d.mp3" id="1_o4er2"]
+
+[node name="BG_MUSIC" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_o4er2")
+volume_db = 7.924
+autoplay = true

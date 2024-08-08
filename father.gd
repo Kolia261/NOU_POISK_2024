@@ -20,12 +20,20 @@ func _physics_process(delta):
 		
 	move_and_slide()
 	
+	
 func _on_detector_body_entered(body):
 	if body.name == "Player":
 		chase = true
 		sprite.play("")
 
-
+	if Globs.score_keys >= 1:
+		sprite.play("open")
+		OS.alert('Успешно! Доступ разрешен', 'True')
+		get_tree().change_scene_to_file("res://home.tscn")
+	else:
+		OS.alert('У вас нет ключа! Найдите ключ!', 'False')
+		
 func _on_detector_body_exited(body):
 	if body.name == "Player":
 		chase = false
+

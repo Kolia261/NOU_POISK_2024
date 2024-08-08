@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b6lyd0qgd7txk"]
+[gd_scene load_steps=41 format=3 uid="uid://b6lyd0qgd7txk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6mo75"]
 [ext_resource type="PackedScene" uid="uid://bdpjuelmyshr6" path="res://character_body_2d.tscn" id="1_oi5wt"]
@@ -13,9 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://b1cwf8nfbhxbv" path="res://factory_.png" id="7_adrie"]
 [ext_resource type="PackedScene" uid="uid://d4l2pllykaifg" path="res://canvas_layer.tscn" id="7_kvykn"]
 [ext_resource type="PackedScene" path="res://audio_stream_player_2d.tscn" id="9_omqyf"]
-[ext_resource type="AudioStream" uid="uid://dmu3amce6qqnt" path="res://roblox-death-sound-effect.mp3" id="11_b6jy3"]
-[ext_resource type="AudioStream" uid="uid://djo0c2j0otm85" path="res://Mick_Gordon_-_Rip_Tear_48126019.mp3" id="13_vsv8n"]
 [ext_resource type="PackedScene" uid="uid://7fh823wfn6fr" path="res://bullet.tscn" id="14_4r4bm"]
+[ext_resource type="AudioStream" uid="uid://c010yfwswq12i" path="res://eclipsed-in-shadows-1.mp3" id="15_7jpme"]
 [ext_resource type="Texture2D" uid="uid://c6y8rrhu02rav" path="res://CloudsBack.png" id="15_12f4t"]
 [ext_resource type="Texture2D" uid="uid://djk7fq4i51nfv" path="res://tree.png" id="16_t7lhs"]
 [ext_resource type="Texture2D" uid="uid://d26ogb78u5a4w" path="res://tree_b.png" id="17_1uem8"]
@@ -23,11 +22,13 @@
 [ext_resource type="PackedScene" uid="uid://pow6150qrx4o" path="res://fatger.tscn" id="19_cu4ai"]
 [ext_resource type="Texture2D" uid="uid://ddo544l5qinna" path="res://heart.png" id="21_u568p"]
 [ext_resource type="Texture2D" uid="uid://cvoravt3yawwi" path="res://flag.png" id="22_2r4l4"]
-[ext_resource type="PackedScene" uid="uid://c0jtyewq67b7y" path="res://naighbor_2.tscn" id="23_t17nd"]
 [ext_resource type="PackedScene" uid="uid://ck1baw070rc3s" path="res://door.tscn" id="25_7phxk"]
 [ext_resource type="PackedScene" uid="uid://chpgp3o0c8i5b" path="res://key.tscn" id="26_0uv1a"]
 [ext_resource type="Texture2D" uid="uid://cuh7giptkx5to" path="res://key_icon.png" id="27_jhabc"]
 [ext_resource type="PackedScene" uid="uid://ds3fyxkh08s58" path="res://dialog.tscn" id="28_xh8i1"]
+[ext_resource type="PackedScene" uid="uid://cduhgj0xthug8" path="res://mini_menushka.tscn" id="29_aftnd"]
+[ext_resource type="PackedScene" uid="uid://dg5dtp47m5w7e" path="res://neighbor_2.tscn" id="29_rh6o4"]
+[ext_resource type="PackedScene" uid="uid://ccdneseedbn4l" path="res://bullet_pula.tscn" id="29_tphk2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_02ch3"]
 texture = ExtResource("3_h6wvl")
@@ -806,7 +807,7 @@ size = Vector2(18, 15)
 script = ExtResource("1_6mo75")
 
 [node name="Player" parent="." instance=ExtResource("1_oi5wt")]
-position = Vector2(-664, 38)
+position = Vector2(-812, 32)
 collision_mask = 1
 script = ExtResource("2_04py0")
 id = 1
@@ -883,6 +884,8 @@ autoplay = "new_animation"
 
 [node name="CanvasLayer" parent="." instance=ExtResource("7_kvykn")]
 
+[node name="mini_menushka" parent="CanvasLayer" instance=ExtResource("29_aftnd")]
+
 [node name="kinzhal" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="kinzhal"]
@@ -890,22 +893,20 @@ texture = ExtResource("3_h6wvl")
 region_enabled = true
 
 [node name="Bg_music" parent="." instance=ExtResource("9_omqyf")]
-stream = ExtResource("13_vsv8n")
-volume_db = 4.948
+stream = ExtResource("15_7jpme")
+volume_db = 20.795
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(575, 325.75)
-scale = Vector2(2.24219, 2.03281)
+position = Vector2(576, 324)
+scale = Vector2(2.24609, 2.025)
 texture = ExtResource("15_12f4t")
 
-[node name="Dead" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_b6jy3")
-volume_db = 3.2
-autoplay = true
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
+color = Color(0.205117, 0.205117, 0.205117, 1)
 
-[node name="bullet" parent="." instance=ExtResource("14_4r4bm")]
+[node name="vivo" parent="." instance=ExtResource("14_4r4bm")]
 position = Vector2(-792, -132)
 
 [node name="trees" type="Node2D" parent="."]
@@ -1027,37 +1028,34 @@ position = Vector2(-619, 32)
 [node name="health" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="health"]
-offset_left = 39.0
-offset_top = 45.0
-offset_right = 130.0
-offset_bottom = 73.0
+offset_left = 2.0
+offset_top = 67.0
+offset_right = 93.0
+offset_bottom = 95.0
 texture = ExtResource("21_u568p")
 
 [node name="Label" type="Label" parent="health"]
-offset_left = 69.0
-offset_top = 46.0
-offset_right = 138.0
-offset_bottom = 69.0
+offset_left = 32.0
+offset_top = 70.0
+offset_right = 101.0
+offset_bottom = 93.0
 text = "SCORE: 0"
 
 [node name="attemps" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="attemps"]
-offset_left = 37.0
-offset_top = 76.0
-offset_right = 325.0
-offset_bottom = 108.0
+offset_left = 1.0
+offset_top = 93.0
+offset_right = 289.0
+offset_bottom = 125.0
 texture = ExtResource("22_2r4l4")
 
 [node name="Label" type="Label" parent="attemps"]
-offset_left = 64.0
-offset_top = 82.0
-offset_right = 150.0
-offset_bottom = 106.0
+offset_left = 29.0
+offset_top = 96.0
+offset_right = 115.0
+offset_bottom = 120.0
 text = "Attemps: 0"
-
-[node name="Naighbor 2" parent="." instance=ExtResource("23_t17nd")]
-position = Vector2(730, 32)
 
 [node name="door" parent="." instance=ExtResource("25_7phxk")]
 position = Vector2(1676, 32)
@@ -1078,20 +1076,35 @@ position = Vector2(-747, -121)
 [node name="key" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="key"]
-offset_left = 40.0
-offset_top = 103.0
-offset_right = 154.0
-offset_bottom = 141.0
+offset_left = 4.0
+offset_top = 119.0
+offset_right = 118.0
+offset_bottom = 157.0
 texture = ExtResource("27_jhabc")
 
 [node name="Label" type="Label" parent="key"]
-offset_left = 62.0
-offset_top = 111.0
-offset_right = 102.0
-offset_bottom = 134.0
+offset_left = 28.0
+offset_top = 126.0
+offset_right = 82.0
+offset_bottom = 149.0
 text = "Keys: 0"
 
 [node name="dialog" parent="." instance=ExtResource("28_xh8i1")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0807834, 0.0807833, 0.0807833, 1)
+
+[node name="neighbor_2" parent="." instance=ExtResource("29_rh6o4")]
+position = Vector2(537, 32)
+
+[node name="bullet" parent="." instance=ExtResource("29_tphk2")]
+
+[node name="text" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="text"]
+offset_left = 467.0
+offset_right = 558.0
+offset_bottom = 45.0
 
 [connection signal="body_entered" from="killzone" to="killzone" method="_on_body_entered"]
 [connection signal="pressed" from="door/Button" to="." method="_on_button_pressed"]

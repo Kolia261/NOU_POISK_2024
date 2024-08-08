@@ -22,6 +22,9 @@ position = Vector2(564.5, 322.25)
 scale = Vector2(0.124365, 0.109163)
 texture = ExtResource("1_h3qsv")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
+color = Color(0.219501, 0.219501, 0.219501, 1)
+
 [node name="Button2" type="Button" parent="."]
 offset_left = 218.0
 offset_top = 261.0
@@ -31,5 +34,18 @@ theme_override_colors/font_color = Color(0.4, 0, 0, 1)
 theme_override_font_sizes/font_size = 75
 text = "Level two"
 
+[node name="Button3" type="Button" parent="."]
+offset_left = 989.0
+offset_top = 573.0
+offset_right = 1150.0
+offset_bottom = 650.0
+theme_override_colors/font_color = Color(0.4, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/h_separation = 5
+theme_override_constants/icon_max_width = 3
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

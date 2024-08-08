@@ -17,4 +17,4 @@ func _on_body_entered(body):
 	if body == $"../Player":
 		Global.restart_count += 1
 		set_score(Global.restart_count)
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://menushka.tscn")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://copetrhjgyjhw"]
+
+[ext_resource type="Texture2D" uid="uid://d4ieddx4c5fyt" path="res://Kachergakoff.png" id="1_v3ux5"]
+
+[node name="Logo" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(97.5, 59.25)
+scale = Vector2(3.74, 3.35714)
+texture = ExtResource("1_v3ux5")

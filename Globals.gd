@@ -1,3 +1,3 @@
 extends Node
 
-var count_healf = 5
+var count_healf = 10

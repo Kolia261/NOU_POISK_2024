@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://pow6150qrx4o"]
+[gd_scene load_steps=14 format=3 uid="uid://pow6150qrx4o"]
 
 [ext_resource type="Texture2D" uid="uid://bbnfdju2e40lp" path="res://Batiok.png" id="1_3k722"]
 [ext_resource type="Script" path="res://fatger.gd" id="1_6nwy1"]
@@ -65,7 +65,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Naighbor_2" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2n6b7"]
+
+[node name="Naighbor" type="CharacterBody2D"]
+collision_mask = 4
 script = ExtResource("1_6nwy1")
 
 [node name="min_Detector" type="Area2D" parent="."]
@@ -85,6 +88,9 @@ shape = SubResource("CircleShape2D_oljk5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cscch")
 animation = &"Death"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_2n6b7")
 
 [connection signal="body_entered" from="min_Detector" to="." method="_on_min_detector_body_entered"]
 [connection signal="body_exited" from="min_Detector" to="." method="_on_min_detector_body_exited"]

@@ -7,6 +7,7 @@ const SPEED = 120.0
 const JUMP_VELOCITY = -250.0
 
 
+var bullet = preload("res://bullet_pula.tscn")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite = $AnimatedSprite2D
@@ -29,6 +30,7 @@ func _physics_process(delta):
 	
 	if direction < 0:
 		sprite.flip_h = true
+		
 	elif direction > 0:
 		sprite.flip_h = false
 	
@@ -46,3 +48,13 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
+	
+	$GunCast2D.look_at(get_global_mouse_position())
+
+
+func shoot():
+	var b = bullet.instantiate()
+	owner.add_child(b)
+	b.transform = $GunCast2D/Marker2D.global_transform
